@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-title>Excluir Cliente</mat-card-title>
+  <form>
+
+    <!-- Dados Pessoais -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Nome" [value]="cliente.cliNome" name="cliNome" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="CPF" [value]="cliente.cliCpf" name="cliCpf" disabled>
+    </mat-form-field>
+
+    <!-- Contato -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Celular" [value]="cliente.conCelular" name="conCelular" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Email" [value]="cliente.conEmail" name="conEmail" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Telefone Comercial" [value]="cliente.conTelefoneComercial" name="conTelefoneComercial" disabled>
+    </mat-form-field>
+
+    <!-- Endereço -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Rua" [value]="cliente.endRua" name="endRua" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Número" [value]="cliente.endNumero" name="endNumero" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Cidade" [value]="cliente.endCidade" name="endCidade" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="CEP" [value]="cliente.endCep" name="endCep" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Estado" [value]="cliente.endEstado" name="endEstado" disabled>
+    </mat-form-field>
+  </form>
+
+  <div class="actions">
+    <button mat-raised-button (click)="deleteCliente()" color="warn">Excluir</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+  </div>
+</mat-card>

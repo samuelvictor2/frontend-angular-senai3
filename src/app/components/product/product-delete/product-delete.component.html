@@ -1,0 +1,61 @@
+<mat-card>
+    <mat-card-title>Excluir Produto</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" [value]="product.proNome" name="proNome" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Preço de Custo (R$)" [value]="product.proPrecoCusto" name="proPrecoCusto" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Preço de Venda (R$)" [value]="product.proPrecoVenda" name="proPrecoVenda" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Quantidade em Estoque" [value]="product.proQuantidadeEstoque" name="proQuantidadeEstoque" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Categoria" [value]="product.proCategoria" name="proCategoria" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Código de Barras" [value]="product.proCodigoDeBarras" name="proCodigoDeBarras" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Marca" [value]="product.proMarca" name="proMarca" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Unidade de Medida" [value]="product.proUnidadeMedida" name="proUnidadeMedida" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Ativo" [value]="product.proAtivo" name="proAtivo" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="Data de Cadastro" [value]="product.proDataCadastro | date:'dd/MM/yyyy'" name="proDataCadastro" disabled>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="Data de Atualização" [value]="product.proDataAtualizacao | date:'dd/MM/yyyy'" name="proDataAtualizacao" disabled>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click)="deleteProduct()" color="warn">
+        Excluir
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+
+</mat-card>

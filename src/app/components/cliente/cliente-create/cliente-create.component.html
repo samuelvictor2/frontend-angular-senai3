@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-title>Novo Cliente</mat-card-title>
+  <form #clienteForm="ngForm" (ngSubmit)="createCliente()">
+    
+    <!-- Dados Pessoais -->
+    <h3>Dados Pessoais</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome completo" [(ngModel)]="cliente.cliNome" name="cliNome" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>CPF</mat-label>
+      <input matInput placeholder="Somente números" [(ngModel)]="cliente.cliCpf" name="cliCpf" required maxlength="11" minlength="11">
+    </mat-form-field>
+
+    <!-- Contato -->
+    <h3>Contato</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Celular</mat-label>
+      <input matInput placeholder="(DDD) 99999-9999" [(ngModel)]="cliente.conCelular" name="conCelular" required maxlength="14">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="exemplo@email.com" [(ngModel)]="cliente.conEmail" name="conEmail" required email>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Telefone Comercial</mat-label>
+      <input matInput placeholder="(DDD) 9999-9999" [(ngModel)]="cliente.conTelefoneComercial" name="conTelefoneComercial" required maxlength="14">
+    </mat-form-field>
+
+    <!-- Endereço -->
+    <h3>Endereço</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Rua</mat-label>
+      <input matInput placeholder="Nome da rua" [(ngModel)]="cliente.endRua" name="endRua" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Número</mat-label>
+      <input matInput placeholder="Número" [(ngModel)]="cliente.endNumero" name="endNumero" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Cidade</mat-label>
+      <input matInput placeholder="Cidade" [(ngModel)]="cliente.endCidade" name="endCidade" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>CEP</mat-label>
+      <input matInput placeholder="00000-000" [(ngModel)]="cliente.endCep" name="endCep" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Estado</mat-label>
+      <input matInput placeholder="UF" [(ngModel)]="cliente.endEstado" name="endEstado" required>
+    </mat-form-field>
+
+    <!-- Botões -->
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!clienteForm.valid">
+        Salvar
+      </button>
+
+      <button mat-raised-button color="warn" type="button" (click)="cancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>

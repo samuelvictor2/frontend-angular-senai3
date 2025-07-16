@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-title>Excluir Forma de Pagamento</mat-card-title>
+  
+  <form>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Descrição</mat-label>
+      <input matInput [value]="formaPagamento?.fpgDescricao" name="fpgDescricao" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Ativo</mat-label>
+      <input matInput [value]="formaPagamento?.fpgAtivo" name="fpgAtivo" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Permite Parcelamento</mat-label>
+      <input matInput [value]="formaPagamento?.fpgPermiteParcelamento" name="fpgPermiteParcelamento" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Número Máximo de Parcelas</mat-label>
+      <input matInput [value]="formaPagamento?.fpgNumeroMaximoParcela" name="fpgNumeroMaximoParcela" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Taxa Adicional</mat-label>
+      <input matInput [value]="formaPagamento?.fpgTaxaAdicional" name="fpgTaxaAdicional" disabled />
+    </mat-form-field>
+  </form>
+
+  <div class="button-group">
+    <button mat-raised-button color="warn" (click)="deleteFormaPagamento()">
+      Excluir
+    </button>
+
+    <button mat-raised-button (click)="cancel()">
+      Cancelar
+    </button>
+  </div>
+</mat-card>
