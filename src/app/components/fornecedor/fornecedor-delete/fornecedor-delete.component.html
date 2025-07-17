@@ -1,24 +1,54 @@
 <mat-card>
   <mat-card-title>Excluir Fornecedor</mat-card-title>
   <form>
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Nome Fantasia" [value]="fornecedor.forNomeFantasia" name="forNomeFantasia" disabled>
+
+    <!-- Dados Pessoais -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Nome Fantasia" [value]="fornecedor.forNomeFantasia" name="forNomeFantasia" disabled />
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="CNPJ" [value]="fornecedor.forCnpj" name="forCnpj" disabled>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="CNPJ" [value]="fornecedor.forCnpj" name="forCnpj" disabled />
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Razão Social" [value]="fornecedor.forRazaoSocial" name="forRazaoSocial" disabled>
+    <!-- Contato -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Celular" [value]="fornecedor.conCelular" name="conCelular" disabled />
     </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Email" [value]="fornecedor.conEmail" name="conEmail" disabled />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Telefone Comercial" [value]="fornecedor.conTelefoneComercial" name="conTelefoneComercial" disabled />
+    </mat-form-field>
+
+    <!-- Endereço -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Rua" [value]="fornecedor.endRua" name="endRua" disabled />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Número" [value]="fornecedor.endNumero" name="endNumero" disabled />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Cidade" [value]="fornecedor.endCidade" name="endCidade" disabled />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="CEP" [value]="fornecedor.endCep" name="endCep" disabled />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Estado" [value]="fornecedor.endEstado" name="endEstado" disabled />
+    </mat-form-field>
+
   </form>
 
-  <button mat-raised-button (click)="deleteFornecedor()" color="warn">
-    Excluir
-  </button>
-  
-  <button mat-raised-button (click)="cancel()">
-    Cancelar
-  </button>
+  <div class="actions">
+    <button mat-raised-button (click)="deleteFornecedor()" color="warn">Excluir</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+  </div>
 </mat-card>

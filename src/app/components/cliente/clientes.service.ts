@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { ClienteDTO } from './clienteDTO.model';
@@ -11,13 +11,18 @@ export class ClienteService {
 
   baseUrl = 'http://localhost:8080/clientes';
 
-  constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private http: HttpClient
+  ) {}
 
-  showMessage(msg: string): void {
+  // Alterado para exibir as classes de erro ou sucesso com base no valor de 'isError'
+  showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
       horizontalPosition: 'right',
-      verticalPosition: 'top'
+      verticalPosition: 'top',
+      panelClass: isError ? ['msg-error'] : ['msg-success']  // Aplicando as classes CSS para erro ou sucesso
     });
   }
 
@@ -29,7 +34,8 @@ export class ClienteService {
     return this.http.get<ClienteDTO[]>(this.baseUrl);
   }
 
-  readById(cliId: string): Observable<ClienteDTO> {
+  // Corrigido para 'cliId' ser um número
+  readById(cliId: number): Observable<ClienteDTO> {
     const url = `${this.baseUrl}/${cliId}`;
     return this.http.get<ClienteDTO>(url);
   }
@@ -39,8 +45,9 @@ export class ClienteService {
     return this.http.put<ClienteDTO>(url, cliente);
   }
 
-  delete(cliId: number): Observable<ClienteDTO> {
+  // Corrigido para 'cliId' ser um número
+  delete(cliId: number): Observable<void> {
     const url = `${this.baseUrl}/${cliId}`;
-    return this.http.delete<ClienteDTO>(url);
+    return this.http.delete<void>(url); // Alterado para 'void', pois não retorna dados
   }
 }

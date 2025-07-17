@@ -2,20 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Fornecedor } from './fornecedor.model'; // ajuste esse caminho se necessário
+import { FornecedorDTO } from './fornecedorDTO.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FornecedorService {
 
-  private baseUrl = 'http://localhost:8080/fornecedor';
+  private baseUrl = 'http://localhost:8080/fornecedores';  // URL do back-end
 
   constructor(
     private http: HttpClient,
     private snackBar: MatSnackBar
   ) {}
 
+  // Exibe mensagens de erro ou sucesso
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
@@ -25,23 +26,31 @@ export class FornecedorService {
     });
   }
 
-  getAll(): Observable<Fornecedor[]> {
-    return this.http.get<Fornecedor[]>(this.baseUrl);
+  // Obter todos os fornecedores
+  getAll(): Observable<FornecedorDTO[]> {
+    return this.http.get<FornecedorDTO[]>(this.baseUrl);
   }
 
-  create(fornecedor: Fornecedor): Observable<Fornecedor> {
-    return this.http.post<Fornecedor>(this.baseUrl, fornecedor);
+  // Obter fornecedor por ID
+  readById(forId: number): Observable<FornecedorDTO> {
+    const url = `${this.baseUrl}/${forId}`;
+    return this.http.get<FornecedorDTO>(url);
   }
 
-  update(fornecedor: Fornecedor): Observable<Fornecedor> {
-    return this.http.put<Fornecedor>(`${this.baseUrl}/${fornecedor.forId}`, fornecedor);
+  // Criar um novo fornecedor
+  create(fornecedor: FornecedorDTO): Observable<FornecedorDTO> {
+    return this.http.post<FornecedorDTO>(this.baseUrl, fornecedor);
   }
 
+  // Atualizar fornecedor existente
+  update(fornecedor: FornecedorDTO): Observable<FornecedorDTO> {
+    const url = `${this.baseUrl}/${fornecedor.forId}`;
+    return this.http.put<FornecedorDTO>(url, fornecedor);
+  }
+
+  // Deletar fornecedor
   delete(forId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${forId}`);
-  }
-
-  readById(forId: number): Observable<Fornecedor> {
-    return this.http.get<Fornecedor>(`${this.baseUrl}/${forId}`);
+    const url = `${this.baseUrl}/${forId}`;
+    return this.http.delete<void>(url);
   }
 }

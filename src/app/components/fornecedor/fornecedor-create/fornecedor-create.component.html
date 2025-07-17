@@ -1,25 +1,77 @@
 <mat-card>
-    <mat-card-title>Novo Fornecedor</mat-card-title>
-    <form>
-      <mat-form-field>
-        <input matInput placeholder="Nome Fantasia" [(ngModel)]="fornecedor.forNomeFantasia" name="forNomeFantasia" required>
-      </mat-form-field>
-  
-      <mat-form-field>
-        <input matInput placeholder="CNPJ" [(ngModel)]="fornecedor.forCnpj" name="forCnpj" required>
-      </mat-form-field>
-  
-      <mat-form-field>
-        <input matInput placeholder="Razão Social" [(ngModel)]="fornecedor.forRazaoSocial" name="forRazaoSocial" required>
-      </mat-form-field>
-    </form>
-  
-    <button mat-raised-button color="primary" (click)="createFornecedor()">
-      Salvar
-    </button>
-  
-    <button mat-raised-button (click)="cancel()">
-      Cancelar
-    </button>
-  </mat-card>
-  
+  <mat-card-title>Novo Fornecedor</mat-card-title>
+  <form #fornecedorForm="ngForm" (ngSubmit)="createFornecedor()">
+    
+    <!-- Dados do Fornecedor -->
+    <h3>Dados do Fornecedor</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nome Fantasia</mat-label>
+      <input matInput placeholder="Nome fantasia" [(ngModel)]="fornecedor.forNomeFantasia" name="forNomeFantasia" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>CNPJ</mat-label>
+      <input matInput placeholder="Somente números" [(ngModel)]="fornecedor.forCnpj" name="forCnpj" required maxlength="14" minlength="14">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Razão Social</mat-label>
+      <input matInput placeholder="Razão social" [(ngModel)]="fornecedor.forRazaoSocial" name="forRazaoSocial" required>
+    </mat-form-field>
+
+    <!-- Endereço -->
+    <h3>Endereço</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Rua</mat-label>
+      <input matInput placeholder="Nome da rua" [(ngModel)]="fornecedor.endRua" name="endRua" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Número</mat-label>
+      <input matInput placeholder="Número" [(ngModel)]="fornecedor.endNumero" name="endNumero" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Cidade</mat-label>
+      <input matInput placeholder="Cidade" [(ngModel)]="fornecedor.endCidade" name="endCidade" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>CEP</mat-label>
+      <input matInput placeholder="00000-000" [(ngModel)]="fornecedor.endCep" name="endCep" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Estado</mat-label>
+      <input matInput placeholder="UF" [(ngModel)]="fornecedor.endEstado" name="endEstado" required>
+    </mat-form-field>
+
+    <!-- Contato -->
+    <h3>Contato</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Celular</mat-label>
+      <input matInput placeholder="(DDD) 99999-9999" [(ngModel)]="fornecedor.conCelular" name="conCelular" required maxlength="14">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="exemplo@email.com" [(ngModel)]="fornecedor.conEmail" name="conEmail" required email>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Telefone Comercial</mat-label>
+      <input matInput placeholder="(DDD) 9999-9999" [(ngModel)]="fornecedor.conTelefoneComercial" name="conTelefoneComercial" required maxlength="14">
+    </mat-form-field>
+
+    <!-- Botões -->
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!fornecedorForm.valid">
+        Salvar
+      </button>
+
+      <button mat-raised-button color="warn" type="button" (click)="cancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Fornecedor } from '../fornecedor.model';
 import { FornecedorService } from '../fornecedor.service';
+import { FornecedorDTO } from '../fornecedorDTO.model'; // Ajustado para usar o DTO correto
 
 @Component({
   selector: 'app-fornecedor-create',
@@ -10,11 +10,19 @@ import { FornecedorService } from '../fornecedor.service';
 })
 export class FornecedorCreateComponent implements OnInit {
 
-  fornecedor: Fornecedor = {
-    forId: 0,  
+  fornecedor: FornecedorDTO = {
+    forId: 0,
     forNomeFantasia: '',
     forCnpj: '',
-    forRazaoSocial: ''
+    forRazaoSocial: '',
+    endRua: '',
+    endNumero: '',
+    endCidade: '',
+    endCep: '',
+    endEstado: '',
+    conCelular: '',
+    conEmail: '',
+    conTelefoneComercial: ''
   };
 
   constructor(
@@ -26,7 +34,11 @@ export class FornecedorCreateComponent implements OnInit {
 
   createFornecedor(): void {
     this.fornecedorService.create(this.fornecedor).subscribe(() => {
+      this.fornecedorService.showMessage('Fornecedor criado com sucesso!');
       this.router.navigate(['/fornecedores']);
+    }, err => {
+      this.fornecedorService.showMessage('Erro ao criar fornecedor.', true);
+      console.error(err);
     });
   }
 

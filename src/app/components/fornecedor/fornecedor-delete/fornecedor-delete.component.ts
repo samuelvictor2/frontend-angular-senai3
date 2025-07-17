@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Fornecedor } from '../fornecedor.model';
 import { FornecedorService } from '../fornecedor.service';
+import { FornecedorDTO } from '../fornecedorDTO.model';
 
 @Component({
   selector: 'app-fornecedor-delete',
@@ -10,7 +10,7 @@ import { FornecedorService } from '../fornecedor.service';
 })
 export class FornecedorDeleteComponent implements OnInit {
 
-  fornecedor!: Fornecedor;
+  fornecedor!: FornecedorDTO;
 
   constructor(
     private fornecedorService: FornecedorService,
@@ -19,17 +19,34 @@ export class FornecedorDeleteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('forId'));
-    this.fornecedorService.readById(id).subscribe(fornecedor => {
-      this.fornecedor = fornecedor;
-    });
+    const forId = Number(this.route.snapshot.paramMap.get('forId'));
+    if (forId) {
+      this.fornecedorService.readById(forId).subscribe(
+        (fornecedor: FornecedorDTO) => {
+          this.fornecedor = fornecedor;
+        },
+        (error) => {
+          this.fornecedorService.showMessage('Fornecedor não encontrado!');
+          this.router.navigate(['/fornecedores']);
+        }
+      );
+    }
   }
 
   deleteFornecedor(): void {
-    this.fornecedorService.delete(this.fornecedor.forId).subscribe(() => {
-      this.fornecedorService.showMessage('Fornecedor excluído com sucesso!');
-      this.router.navigate(['/fornecedores']);
-    });
+    if (this.fornecedor.forId) {
+      this.fornecedorService.delete(this.fornecedor.forId).subscribe(
+        () => {
+          this.fornecedorService.showMessage('Fornecedor excluído com sucesso!');
+          this.router.navigate(['/fornecedores']);
+        },
+        (error) => {
+          this.fornecedorService.showMessage('Erro ao excluir fornecedor.');
+        }
+      );
+    } else {
+      this.fornecedorService.showMessage('ID do fornecedor inválido!');
+    }
   }
 
   cancel(): void {

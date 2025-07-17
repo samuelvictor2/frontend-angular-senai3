@@ -14,14 +14,14 @@ export class ClienteUpdateComponent implements OnInit {
     cliId: 0,
     cliNome: '',
     cliCpf: '',
+    conCelular: '',
+    conEmail: '',
+    conTelefoneComercial: '',
     endRua: '',
     endNumero: '',
     endCidade: '',
     endCep: '',
-    endEstado: '',
-    conCelular: '',
-    conEmail: '',
-    conTelefoneComercial: ''
+    endEstado: ''
   };
 
   constructor(
@@ -33,13 +33,12 @@ export class ClienteUpdateComponent implements OnInit {
   ngOnInit(): void {
     const cliId = this.route.snapshot.paramMap.get('cliId');
     if (cliId) {
-      this.clienteService.readById(cliId).subscribe(
-        (cliente: any) => {
-          // Aqui assumimos que o backend já retorna os dados no formato ClienteDTO
+      this.clienteService.readById(+cliId).subscribe(
+        (cliente: ClienteDTO) => {
           this.cliente = cliente;
         },
         err => {
-          this.clienteService.showMessage('Cliente não encontrado!');
+          this.clienteService.showMessage('Cliente não encontrado!', true);
           this.router.navigate(['/clientes']);
         }
       );
@@ -53,7 +52,7 @@ export class ClienteUpdateComponent implements OnInit {
         this.router.navigate(['/clientes']);
       },
       err => {
-        this.clienteService.showMessage('Erro ao atualizar cliente.');
+        this.clienteService.showMessage('Erro ao atualizar cliente.', true);
         console.error(err);
       }
     );

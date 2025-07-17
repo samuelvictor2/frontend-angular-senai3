@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Fornecedor } from '../fornecedor.model';
+import { FornecedorDTO } from '../fornecedorDTO.model';
 import { FornecedorService } from '../fornecedor.service';
 
 @Component({
@@ -9,16 +9,22 @@ import { FornecedorService } from '../fornecedor.service';
 })
 export class FornecedorReadComponent implements OnInit {
 
-  fornecedores!: Fornecedor[];
+  fornecedores: FornecedorDTO[] = [];  // Inicializado com um array vazio
   displayedColumns = ['forId', 'forNomeFantasia', 'forCnpj', 'forRazaoSocial', 'action'];
 
   constructor(private fornecedorService: FornecedorService) { }
 
   ngOnInit(): void {
-    this.fornecedorService.getAll().subscribe(fornecedores => {
-      this.fornecedores = fornecedores;
-      console.log(fornecedores);
-    });
+    // Chama o método getAll para obter a lista de fornecedores
+    this.fornecedorService.getAll().subscribe(
+      (fornecedores) => {
+        console.log(fornecedores);  // Verifique no console a estrutura da resposta
+        this.fornecedores = fornecedores; // Atribui a resposta à variável fornecedores
+      },
+      (error) => {
+        console.error('Erro ao carregar fornecedores:', error);
+      }
+    );
   }
 
 }

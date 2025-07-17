@@ -21,12 +21,12 @@ export class ClienteDeleteComponent implements OnInit {
   ngOnInit(): void {
     const cliId = this.route.snapshot.paramMap.get('cliId');
     if (cliId) {
-      this.clienteService.readById(cliId).subscribe(
-        (cliente) => {
+      this.clienteService.readById(+cliId).subscribe(
+        (cliente: ClienteDTO) => {
           this.cliente = cliente;
         },
         (error) => {
-          this.clienteService.showMessage('Cliente não encontrado!');
+          this.clienteService.showMessage('Cliente não encontrado!', true);
           this.router.navigate(['/clientes']);
         }
       );
@@ -41,11 +41,11 @@ export class ClienteDeleteComponent implements OnInit {
           this.router.navigate(['/clientes']);
         },
         (error) => {
-          this.clienteService.showMessage('Erro ao excluir cliente!');
+          this.clienteService.showMessage('Erro ao excluir cliente!', true);
         }
       );
     } else {
-      this.clienteService.showMessage('ID do cliente inválido!');
+      this.clienteService.showMessage('ID do cliente inválido!', true);
     }
   }
 
