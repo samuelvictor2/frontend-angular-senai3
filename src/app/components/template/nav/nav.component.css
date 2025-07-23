@@ -1,15 +1,36 @@
-.sidenav{
-    background-color: #3F51B5;
+.sidenav {
+    background-color: #A9744F; /* Marrom Pão */
     width: 200px;
 }
-.sidenav a{
-    color: #fff;
-}
-.sidenav i{
-    padding-right: 10px;
+
+.sidenav a {
+    color: #FFF2D8; /* Creme Manteiga */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border-radius: 4px;
 }
 
-.content{
+.sidenav a:hover {
+    background-color: rgba(255, 242, 216, 0.15); /* leve sublimação */
+    transform: translateX(3px); /* movimento sutil para direita */
+    color: #ffffff;
+}
+
+.sidenav i {
+    padding-right: 10px;
+    color: #FFF2D8;
+    transition: color 0.3s ease;
+}
+
+.sidenav a:hover i {
+    color: #ffffff;
+}
+
+.content {
     padding: 16px;
-    background-color: #fff;
+    background-color: #F5E8C7; /* Bege Trigo */
+    color: #5B3A29; /* Marrom Café para texto */
 }
