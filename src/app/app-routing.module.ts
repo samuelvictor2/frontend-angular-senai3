@@ -21,6 +21,8 @@ import { ClienteReadComponent } from './components/cliente/cliente-read/cliente-
 import { ClienteCreateComponent } from './components/cliente/cliente-create/cliente-create.component';
 import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
 import { ClienteDeleteComponent } from './components/cliente/cliente-delete/cliente-delete.component';
+import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
+import { VendaCrudComponent } from './views/venda-crud/venda-crud.component';
 
 const routes: Routes = [
   // ✅ Rota de login e redirecionamento padrão
@@ -48,6 +50,9 @@ const routes: Routes = [
   { path: 'clientes/create', component: ClienteCreateComponent },
   { path: 'clientes/update/:cliId', component: ClienteUpdateComponent },
   { path: 'clientes/delete/:cliId', component: ClienteDeleteComponent },
+
+  { path: 'vendas', component: VendaCrudComponent },
+  { path: 'vendas/create', component: VendaCreateComponent }, // Adicionando a rota de criação de venda
 ];
 
 @NgModule({

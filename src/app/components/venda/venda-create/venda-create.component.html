@@ -1,0 +1,24 @@
+<p>venda-create works!</p>
+<mat-card>
+  <form (ngSubmit)="criarVenda()">
+    <mat-form-field appearance="fill">
+      <mat-label>Cliente ID</mat-label>
+      <input matInput type="number" [(ngModel)]="venda.clienteId" name="clienteId" required>
+    </mat-form-field>
+
+    <div *ngFor="let item of venda.itens; let i = index">
+      <mat-form-field appearance="fill">
+        <mat-label>ID do Produto</mat-label>
+        <input matInput type="number" [(ngModel)]="item.produtoId" name="produtoId{{i}}" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Quantidade</mat-label>
+        <input matInput type="number" [(ngModel)]="item.quantidade" name="quantidade{{i}}" required>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="adicionarItem()">Adicionar Produto</button>
+    <button mat-raised-button color="accent" type="submit">Finalizar Venda</button>
+  </form>
+</mat-card>

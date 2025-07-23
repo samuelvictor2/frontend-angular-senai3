@@ -55,6 +55,9 @@ import { ClienteCreateComponent } from './components/cliente/cliente-create/clie
 import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
 import { ClienteDeleteComponent } from './components/cliente/cliente-delete/cliente-delete.component';
 import { LoginComponent } from './views/login/login.component';
+import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
+import { VendaCrudComponent } from './views/venda-crud/venda-crud.component';
+import { VendaReadComponent } from './components/venda/venda-read/venda-read.component';
 
 
 
@@ -89,6 +92,9 @@ registerLocaleData(localePt)
     ClienteUpdateComponent,
     ClienteDeleteComponent,
     LoginComponent,
+    VendaCreateComponent,
+    VendaCrudComponent,
+    VendaReadComponent,
   ],
   imports: [
     BrowserModule,
