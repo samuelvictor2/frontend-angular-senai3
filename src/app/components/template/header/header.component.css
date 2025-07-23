@@ -1,17 +1,71 @@
-.logo {
-    height: 40px;
-    vertical-align: middle;
+/* Botões da lista lateral */
+.mat-list-item {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    border: 1px solid transparent;
+    margin-bottom: 6px;
   }
   
-  .header {
+  /* Links da sidenav com aparência industrial */
+  .sidenav a {
+    background-color: transparent;
+    color: #000000; /* Creme Técnico */
+    border: 1px solid rgba(255, 242, 216, 0.1); /* Borda sutil */
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+  
+  /* Hover com destaque cobre e movimento */
+  .sidenav a:hover {
+    background-color: #D4A373; /* Cobre Claro */
+    color: #1C1C1C; /* Preto Fosco */
+    transform: translateX(4px);
+    border: 1px solid #A9744F; /* Ferrugem Queimada */
+  }
+  
+  /* Ícones mudam ao passar o mouse */
+  .sidenav a:hover i {
+    color: #1C1C1C;
+  }
+  
+  /* Título da aplicação */
+  .title-group a {
+    color: #020202;
+    font-size: 22px;
+    text-decoration: none;
+    font-weight: bold;
     display: flex;
     align-items: center;
-    background-color: #A9744F;
-    color: #FFF2D8;
+    font-family: 'Playfair Display', serif;
   }
   
-  .title-group {
-    margin-left: 10px;
-    font-family: 'Playfair Display', serif;
+  .title-group i {
+    margin-right: 8px;
+  }
+  
+  /* Área de conteúdo principal */
+  .content {
+    padding: 24px;
+    background-color: #333333; /* Fundo claro */
+    color: #1C1C1C; /* Preto Fosco para leitura */
+    min-height: calc(100vh - 64px);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .sidenav {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  
+    .sidenav a {
+      justify-content: center;
+    }
+  
+    .content {
+      padding: 16px;
+    }
   }
   

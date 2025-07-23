@@ -1,36 +1,44 @@
+/* Sidenav lateral */
 .sidenav {
-    background-color: #A9744F; /* Marrom Pão */
+    background-color: #3E3E3E; /* Cinza Engrenagem */
     width: 200px;
 }
 
+/* Links dentro da sidenav */
 .sidenav a {
-    color: #FFF2D8; /* Creme Manteiga */
+    color: #FFF2D8; /* Creme Técnico */
     text-decoration: none;
     display: flex;
     align-items: center;
     padding: 10px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     border-radius: 4px;
+    border: 1px solid transparent;
 }
 
+/* Efeito ao passar o mouse */
 .sidenav a:hover {
-    background-color: rgba(255, 242, 216, 0.15); /* leve sublimação */
-    transform: translateX(3px); /* movimento sutil para direita */
-    color: #ffffff;
+    background-color: #D4A373; /* Cobre Claro */
+    color: #1C1C1C; /* Preto Fosco */
+    transform: translateX(3px);
+    border: 1px solid #A9744F; /* Ferrugem Queimada */
 }
 
+/* Ícones */
 .sidenav i {
     padding-right: 10px;
-    color: #FFF2D8;
+    color: #ffffff;
     transition: color 0.3s ease;
 }
 
+/* Ícones ao passar o mouse */
 .sidenav a:hover i {
-    color: #ffffff;
+    color: #1C1C1C;
 }
 
+/* Área principal de conteúdo */
 .content {
     padding: 16px;
-    background-color: #F5E8C7; /* Bege Trigo */
-    color: #5B3A29; /* Marrom Café para texto */
+    background-color: #616161; /* Creme Técnico */
+    color: #1C1C1C; /* Preto Fosco para contraste e leitura */
 }
