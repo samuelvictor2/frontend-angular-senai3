@@ -95,6 +95,9 @@ registerLocaleData(localePt)
     VendaCreateComponent,
     VendaCrudComponent,
     VendaReadComponent,
+    AppComponent,
+    LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -115,7 +118,12 @@ registerLocaleData(localePt)
     MatSortModule,
     MatSelectModule,      
     MatDatepickerModule,  
-    MatNativeDateModule
+    MatNativeDateModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
+    
 ],
   providers: [{
     provide: LOCALE_ID,

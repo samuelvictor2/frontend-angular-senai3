@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service'; // ajuste o caminho se necessário
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'] // ou .scss, dependendo do que você usa
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   username = '';
@@ -15,9 +15,17 @@ export class LoginComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
   login() {
+    this.erro = false;
     this.auth.login(this.username, this.password).subscribe({
-      next: () => this.router.navigate(['/home']),
-      error: () => this.erro = true
+      next: (res) => {
+        localStorage.setItem('token', res.token);
+        alert('Login bem sucedido!');
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        this.erro = true;
+      }
     });
   }
+  
 }

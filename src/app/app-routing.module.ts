@@ -53,6 +53,9 @@ const routes: Routes = [
 
   { path: 'vendas', component: VendaCrudComponent },
   { path: 'vendas/create', component: VendaCreateComponent }, // Adicionando a rota de criação de venda
+
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' } // redireciona para login
 ];
 
 @NgModule({
