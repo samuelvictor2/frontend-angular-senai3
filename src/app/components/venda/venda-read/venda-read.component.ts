@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { VendaDTO } from '../venda.model';
 import { VendaService } from '../venda.service';
+import { VendaDTO } from '../venda.model';
 
 @Component({
   selector: 'app-venda-read',
@@ -9,20 +9,17 @@ import { VendaService } from '../venda.service';
 })
 export class VendaReadComponent implements OnInit {
   vendas: VendaDTO[] = [];
-  
-  // Defina as colunas a serem exibidas na tabela
-  displayedColumns: string[] = ['clienteId', 'itens'];
 
   constructor(private vendaService: VendaService) {}
 
   ngOnInit(): void {
-    this.listarVendas();
+    this.loadVendas();
   }
 
-  listarVendas(): void {
-    this.vendaService.listarVendas().subscribe({
-      next: (vendas) => this.vendas = vendas,
-      error: (err) => console.error('Erro ao carregar vendas: ', err),
+  loadVendas(): void {
+    this.vendaService.findAll().subscribe({
+      next: (data) => this.vendas = data,
+      error: (e) => console.error(e)
     });
   }
 }

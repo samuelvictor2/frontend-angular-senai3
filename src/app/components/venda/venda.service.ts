@@ -7,15 +7,19 @@ import { VendaDTO } from './venda.model';
   providedIn: 'root'
 })
 export class VendaService {
-  private baseUrl = 'http://localhost:8080/vendas';  // Ajuste a URL conforme necessário
+  private baseUrl = 'http://localhost:8080/vendas';
 
   constructor(private http: HttpClient) {}
 
-  criarVenda(venda: VendaDTO): Observable<any> {
-    return this.http.post(this.baseUrl, venda);
+  create(venda: VendaDTO): Observable<VendaDTO> {
+    return this.http.post<VendaDTO>(this.baseUrl, venda);
   }
 
-  listarVendas(): Observable<VendaDTO[]> {
+  findAll(): Observable<VendaDTO[]> {
     return this.http.get<VendaDTO[]>(this.baseUrl);
+  }
+
+  findById(id: number): Observable<VendaDTO> {
+    return this.http.get<VendaDTO>(`${this.baseUrl}/${id}`);
   }
 }
